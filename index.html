@@ -3,134 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gargantua - Agujero Negro</title>
+    <title>Relojes de Prestigio | Estilo Rolex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; overflow: hidden; background-color: #000; }
-        canvas { display: block; }
-        #info {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
+        /* Variables de color estilo Rolex */
+        :root {
+            --rolex-green: #006039;
+            --rolex-gold: #a37e2c;
+            --dark-grey: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-grey);
+        }
+
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: var(--white);
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
             letter-spacing: 2px;
-            pointer-events: none;
-            text-shadow: 0 0 10px rgba(255,150,50,0.8);
+            color: var(--rolex-green);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-grey);
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--rolex-gold);
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1547996160-81dfa63595dd?q=80&w=1974&auto=format&fit=crop') center/cover;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Sección de Producto */
+        .product-section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--rolex-green);
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: 1px solid var(--rolex-gold);
+            color: var(--rolex-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--rolex-gold);
+            color: white;
+        }
+
+        footer {
+            background: var(--rolex-green);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
-    <div id="info">GARGANTUA - SIMULACIÓN VISUAL</div>
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-            }
-        }
-    </script>
-    <script type="module">
-        import * as THREE from 'three';
 
-        // Configuración básica
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        document.body.appendChild(renderer.domElement);
+    <nav>
+        <div class="logo">LUXURY TIME</div>
+        <ul>
+            <li><a href="#">RELOJES</a></li>
+            <li><a href="#">HISTORIA</a></li>
+            <li><a href="#">DISTRIBUIDORES</a></li>
+        </ul>
+    </nav>
 
-        // Geometría del Horizonte de Sucesos (La esfera negra central)
-        const holeGeometry = new THREE.SphereGeometry(2, 64, 64);
-        const holeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
-        const blackHole = new THREE.Mesh(holeGeometry, holeMaterial);
-        scene.add(blackHole);
+    <section class="hero">
+        <div class="hero-content">
+            <p>La Excelencia en cada Segundo</p>
+            <h1>SUBMARINER</h1>
+        </div>
+    </section>
 
-        // Disco de Acreción (Efecto Interstellar)
-        // Usamos un anillo con un shader personalizado para el brillo y la distorsión
-        const thick = 1.5;
-        const accretionGeometry = new THREE.TorusGeometry(5, thick, 2, 100);
-        
-        const accretionMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                time: { value: 0 }
-            },
-            vertexShader: `
-                varying vec2 vUv;
-                varying vec3 vPosition;
-                void main() {
-                    vUv = uv;
-                    vPosition = position;
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                }
-            `,
-            fragmentShader: `
-                uniform float time;
-                varying vec2 vUv;
-                varying vec3 vPosition;
+    <section class="product-section">
+        <h2 class="section-title">Modelos Destacados</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=600&auto=format&fit=crop" alt="Reloj 1">
+                <h3>Oyster Perpetual</h3>
+                <p>El espíritu del diseño original.</p>
+                <a href="#" class="btn">DESCUBRIR</a>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a1b?q=80&w=600&auto=format&fit=crop" alt="Reloj 2">
+                <h3>Datejust</h3>
+                <p>Un clásico de la elegancia moderna.</p>
+                <a href="#" class="btn">DESCUBRIR</a>
+            </div>
+        </div>
+    </section>
 
-                void main() {
-                    float noise = fract(sin(dot(vUv ,vec2(12.9898,78.233)*time)) * 43758.5453);
-                    float intensity = smoothstep(0.4, 0.6, vUv.y) * smoothstep(0.6, 0.4, vUv.y);
-                    
-                    // Color naranja/dorado cinematográfico
-                    vec3 color = vec3(1.0, 0.5, 0.1) * (0.8 + 0.5 * noise);
-                    float alpha = intensity * (0.5 + 0.5 * sin(time + vPosition.x));
-                    
-                    gl_FragColor = vec4(color, alpha);
-                }
-            `,
-            transparent: true,
-            side: THREE.DoubleSide,
-            blending: THREE.AdditiveBlending
-        });
+    <footer>
+        <p>&copy; 2026 LUXURY TIME - INSPIRACIÓN ALTA RELOJERÍA</p>
+    </footer>
 
-        const accretionDisk = new THREE.Mesh(accretionGeometry, accretionMaterial);
-        accretionDisk.rotation.x = Math.PI / 2.1; // Inclinación característica
-        scene.add(accretionDisk);
-
-        // Partículas de fondo (Estrellas)
-        const starGeometry = new THREE.BufferGeometry();
-        const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
-        const starVertices = [];
-        for (let i = 0; i < 5000; i++) {
-            const x = (Math.random() - 0.5) * 100;
-            const y = (Math.random() - 0.5) * 100;
-            const z = (Math.random() - 0.5) * 100;
-            starVertices.push(x, y, z);
-        }
-        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-        const stars = new THREE.Points(starGeometry, starMaterial);
-        scene.add(stars);
-
-        camera.position.z = 12;
-        camera.position.y = 2;
-
-        // Animación
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            const t = performance.now() * 0.001;
-            accretionMaterial.uniforms.time.value = t;
-            
-            // Rotación suave del disco
-            accretionDisk.rotation.z = t * 0.2;
-            
-            // Movimiento orbital de la cámara
-            camera.position.x = Math.sin(t * 0.1) * 15;
-            camera.position.z = Math.cos(t * 0.1) * 15;
-            camera.lookAt(blackHole.position);
-
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        animate();
-    </script>
 </body>
 </html>
